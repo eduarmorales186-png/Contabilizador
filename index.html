@@ -34,6 +34,7 @@
                 <label>$100 <input type="number" id="b100" value="0" /></label>
                 <label>$200 <input type="number" id="b200" value="0" /></label>
                 <label>$500 <input type="number" id="b500" value="0" /></label>
+                <label>$500 <input type="number" id="b1000" value="0" /></label>
 
                 <p>Total Billetes: <span id="totalBilletes">$0.00</span></p>
             </div>
@@ -64,7 +65,8 @@ function calcularBilletes() {
                 (parseInt(b50.value) * 50) +
                 (parseInt(b100.value) * 100) +
                 (parseInt(b200.value) * 200) +
-                (parseInt(b500.value) * 500);
+                (parseInt(b500.value) * 500) +
+                (parseInt(b1000.value) * 1000);
 
     totalBilletes.innerText = "$" + total.toFixed(2);
     return total;
