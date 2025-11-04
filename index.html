@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Monedas y Billetes</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contador de Monedas y Billetes</h1>
+
+        <div class="grid">
+            <!-- MONEDAS -->
+            <div class="card">
+                <h2>Contador de Monedas</h2>
+
+                <label>$0.50 <input type="number" id="m05" value="0" /></label>
+                <label>$1 <input type="number" id="m1" value="0" /></label>
+                <label>$2 <input type="number" id="m2" value="0" /></label>
+                <label>$5 <input type="number" id="m5" value="0" /></label>
+                <label>$10 <input type="number" id="m10" value="0" /></label>
+
+                <p>Total Monedas: <span id="totalMonedas">$0.00</span></p>
+            </div>
+
+            <!-- BILLETES -->
+            <div class="card">
+                <h2>Contador de Billetes</h2>
+
+                <label>$20 <input type="number" id="b20" value="0" /></label>
+                <label>$50 <input type="number" id="b50" value="0" /></label>
+                <label>$100 <input type="number" id="b100" value="0" /></label>
+                <label>$200 <input type="number" id="b200" value="0" /></label>
+                <label>$500 <input type="number" id="b500" value="0" /></label>
+
+                <p>Total Billetes: <span id="totalBilletes">$0.00</span></p>
+            </div>
+        </div>
+
+        <div class="totalBox">
+            <h2>Total General: <span id="totalGeneral">$0.00</span></h2>
+            <button onclick="calcularTodo()">Calcular</button>
+            <button onclick="limpiarTodo()">Limpiar</button>
+        </div>
+    </div>
+
+<script>
+// Valores
+function calcularMonedas() {
+    let total = (parseInt(m05.value) * 0.50) +
+                (parseInt(m1.value) * 1) +
+                (parseInt(m2.value) * 2) +
+                (parseInt(m5.value) * 5) +
+                (parseInt(m10.value) * 10);
+
+    totalMonedas.innerText = "$" + total.toFixed(2);
+    return total;
+}
+
+function calcularBilletes() {
+    let total = (parseInt(b20.value) * 20) +
+                (parseInt(b50.value) * 50) +
+                (parseInt(b100.value) * 100) +
+                (parseInt(b200.value) * 200) +
+                (parseInt(b500.value) * 500);
+
+    totalBilletes.innerText = "$" + total.toFixed(2);
+    return total;
+}
+
+function calcularTodo() {
+    let total = calcularMonedas() + calcularBilletes();
+    totalGeneral.innerText = "$" + total.toFixed(2);
+}
+
+function limpiarTodo() {
+    document.querySelectorAll("input").forEach(i => i.value = 0);
+    totalMonedas.innerText = "$0.00";
+    totalBilletes.innerText = "$0.00";
+    totalGeneral.innerText = "$0.00";
+}
+</script>
+
+</body>
+</html>
